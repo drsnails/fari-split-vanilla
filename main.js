@@ -11,9 +11,9 @@ const state = {
 const init = () => {
     loadStateFromStorage()
     document.body.classList.toggle("dark", state.dark)
-    $("#headerBadge").textContent = state.currency
     $("#currencyInput").value = state.currency
     $("#darkSwitch").dataset.checked = state.dark ? "true" : "false"
+    $("#headerBadge").textContent = state.dark ? '☀️' : '🌓'
 
     renderPeopleList()
     renderExpenseList()
@@ -42,7 +42,7 @@ const init = () => {
         state.people = [{ id: uid(), name: "You" }]
         state.expenses = []
         state.currency = "₪"
-        $("#headerBadge").textContent = state.currency
+        $("#headerBadge").textContent = state.dark ? '☀️' : '🌓'
         $("#currencyInput").value = state.currency
         renderPeopleList()
         renderExpenseList()
@@ -60,6 +60,8 @@ const init = () => {
     $("#darkToggle").addEventListener("change", e => {
         state.dark = e.target.checked
         document.body.classList.toggle("dark", state.dark)
+        $("#headerBadge").textContent = state.dark ? '☀️' : '🌓'
+
         $("#darkSwitch").dataset.checked = state.dark ? "true" : "false"
         saveStateToStorage()
     })
@@ -336,7 +338,8 @@ const updateSummaryAndSettlements = (persist = true) => {
 }
 
 const updateCurrencyUI = () => {
-    $("#headerBadge").textContent = state.currency
+    console.log('state.dark:', state.dark)
+    $("#headerBadge").textContent = state.dark ? '☀️' : '🌓'
     $("#currencyInput").value = state.currency
     document.querySelectorAll(".amount").forEach(inp => {
         inp.placeholder = `${state.currency} 0.00`
