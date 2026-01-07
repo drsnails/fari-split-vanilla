@@ -1,0 +1,256 @@
+:root {
+	--bg: #f7f7f8;
+	--panel: #ffffff;
+	--ink: #141417;
+	--muted: #6b7280;
+	--primary: #2563eb;
+	--primary-ink: #ffffff;
+	--danger: #ef4444;
+	--ok: #059669;
+	--border: #e5e7eb;
+	--shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+body.dark {
+	--bg: #0b0b0c;
+	--panel: #151518;
+	--ink: #f4f4f5;
+	--muted: #a1a1aa;
+	--primary: #60a5fa;
+	--primary-ink: #0b0b0c;
+	--danger: #fb7185;
+	--ok: #34d399;
+	--border: #26262b;
+	--shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+	overflow-x: hidden;
+}
+body {
+	margin: 0;
+	background: linear-gradient(
+		180deg,
+		var(--bg),
+		color-mix(in oklab, var(--bg), black 6%) 70%
+	);
+	color: var(--ink);
+	font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+		Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+#app {
+	min-height: 100vh;
+}
+.container {
+	max-width: 480px;
+	margin: 0 auto;
+	padding: 16px;
+	padding-bottom: 112px;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.topbar {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	backdrop-filter: blur(10px);
+	background: color-mix(in oklab, var(--panel), transparent 20%);
+	border-bottom: 1px solid var(--border);
+}
+.topbar-inner {
+	max-width: 480px;
+	margin: 0 auto;
+	padding: 12px 16px;
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+.brand {
+	font-weight: 800;
+}
+.badge {
+	margin-left: auto;
+	font-size: 12px;
+	color: var(--muted);
+}
+.switch {
+	width: 44px;
+	height: 28px;
+	border-radius: 999px;
+	background: var(--border);
+	position: relative;
+	cursor: pointer;
+	flex: none;
+	border: 1px solid var(--border);
+}
+.switch input {
+	display: none;
+}
+.switch-dot {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: var(--panel);
+	box-shadow: var(--shadow);
+	transition: transform 0.25s ease;
+}
+.switch[data-checked="true"] .switch-dot {
+	transform: translateX(16px);
+}
+.section-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 8px 0 8px;
+}
+.section-title h2 {
+	font-size: 18px;
+	margin: 0;
+}
+.section-action {
+	margin-left: auto;
+}
+.card {
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: 16px;
+	box-shadow: var(--shadow);
+	overflow-x: hidden;
+}
+.card + .card {
+	margin-top: 10px;
+}
+.card-body {
+	padding: 12px;
+}
+
+/* Row layout: select | amount | button, no horizontal overflow */
+.row {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+	gap: 8px;
+	align-items: center;
+}
+.row > * {
+	min-width: 0;
+}
+.row .btn {
+	white-space: nowrap;
+}
+
+.input,
+select,
+.btn {
+	appearance: none;
+	border: 1px solid var(--border);
+	background: transparent;
+	color: var(--ink);
+	padding: 10px 12px;
+	border-radius: 12px;
+	font-size: 16px;
+}
+.input::placeholder {
+	color: var(--muted);
+}
+.btn {
+	background: var(--panel);
+	transition: transform 0.06s ease, background 0.2s ease,
+		border-color 0.2s ease;
+	cursor: pointer;
+}
+.btn:active {
+	transform: translateY(1px) scale(0.997);
+}
+.btn-primary {
+	background: var(--primary);
+	color: var(--primary-ink);
+	border-color: transparent;
+}
+.btn-secondary {
+	background: color-mix(in oklab, var(--panel), var(--primary) 12%);
+}
+.btn-outline {
+	background: transparent;
+	border-color: var(--primary);
+	color: var(--primary);
+}
+.btn-danger {
+	background: var(--danger);
+	color: #fff;
+	border-color: transparent;
+}
+
+.hint {
+	text-align: center;
+	color: var(--muted);
+	padding: 12px 0;
+}
+.stat {
+	display: flex;
+	justify-content: space-between;
+	margin: 6px 0;
+}
+.mono {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono";
+}
+.pos {
+	color: var(--ok);
+}
+.neg {
+	color: var(--danger);
+}
+.footer {
+	margin: 20px 0 0;
+	text-align: center;
+	color: var(--muted);
+	font-size: 12px;
+}
+.bottombar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 60;
+	backdrop-filter: blur(10px);
+	background: color-mix(in oklab, var(--panel), transparent 20%);
+	border-top: 1px solid var(--border);
+}
+.bottombar-inner {
+	max-width: 480px;
+	margin: 0 auto;
+	padding: 12px 16px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 8px;
+}
+.fade-in {
+	animation: fade 0.25s ease both;
+}
+@keyframes fade {
+	from {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+.truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.small {
+	font-size: 12px;
+	color: var(--muted);
+}

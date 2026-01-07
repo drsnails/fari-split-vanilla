@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+		/>
+		<title>FairSplit — Mobile Bill Splitter</title>
+		<meta name="theme-color" content="#0b0b0c" />
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body onload="init()">
+		<div id="app">
+			<div class="topbar">
+				<div class="topbar-inner">
+					<span class="brand">FairSplit</span>
+					<span class="badge" id="headerBadge">₪</span>
+					<label class="switch" id="darkSwitch" data-checked="false">
+						<input type="checkbox" id="darkToggle" />
+						<span class="switch-dot"></span>
+					</label>
+				</div>
+			</div>
+
+			<main class="container">
+				<section>
+					<div class="section-title">
+						<h2>People</h2>
+						<div class="section-action">
+							<button class="btn btn-secondary" id="addPersonBtn">
+								Add
+							</button>
+						</div>
+					</div>
+					<div id="peopleList"></div>
+				</section>
+
+				<section>
+					<div class="section-title">
+						<h2>Expenses</h2>
+						<div class="section-action">
+							<button class="btn btn-primary" id="addExpenseBtn">
+								Add
+							</button>
+						</div>
+					</div>
+					<div id="expenseList"></div>
+				</section>
+
+				<section>
+					<div class="section-title">
+						<h2>Summary</h2>
+						<div class="section-action" style="display: flex; gap: 8px">
+							<input
+								class="input"
+								id="currencyInput"
+								value="₪"
+								style="width: 64px; text-align: center"
+							/>
+							<button class="btn" id="shareBtn">Share</button>
+							<button class="btn btn-danger" id="resetBtn">Reset</button>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-body" id="summaryBox"></div>
+					</div>
+
+					<div class="card">
+						<div class="card-body" id="settlementsBox"></div>
+					</div>
+				</section>
+			</main>
+
+			<nav class="bottombar">
+				<div class="bottombar-inner">
+					<button class="btn btn-primary" id="bottomAddExpense">Expense</button>
+					<button class="btn btn-secondary" id="bottomAddPerson">Person</button>
+				</div>
+			</nav>
+		</div>
+
+		<script src="services/utils.service.js"></script>
+		<script src="services/transfer.service.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
